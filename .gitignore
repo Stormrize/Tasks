@@ -1,0 +1,52 @@
+# =========================
+# Rider IDE
+# =========================
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# =========================
+# Build results
+# =========================
+bin/
+obj/
+out/
+
+# =========================
+# Rider caches
+# =========================
+*.Rider/
+.idea/.idea.*
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/libraries/
+
+# =========================
+# User-specific files
+# =========================
+*.user
+*.userosscache
+*.suo
+*.ntvs_analysis.dat
+*.njsproj
+*.sln.docstates
+
+# =========================
+# OS generated files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# NuGet
+# =========================
+*.nupkg
+# Uncomment if you have packages folder (old style)
+# packages/
+
+# =========================
+# Logs and temporary files
+# =========================
+*.log
+*.vspscc
