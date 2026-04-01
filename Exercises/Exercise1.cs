@@ -79,7 +79,7 @@
 		Console.WriteLine("Скільки ви спожили електроенергії цього місяця в кіловатах на годину?");
 		int kWh;
 		while (!int.TryParse(Console.ReadLine(), out kWh))
-		{
+		{:
 			Console.WriteLine("Будь ласка, введіть коректне число:");
 		}
 
@@ -97,6 +97,8 @@
 
 		bool card = answer == "так";
 
-		Console.WriteLine(Cashback(payment, card));
+		float cashback = Cashback(payment, card);
+		float discountPercent = payment == 0 ? 0 : cashback / payment * 100;
+		Console.WriteLine("Кешбек: " + cashback + "\nСкидка: " + discountPercent + "\nЗагальна сумма: " + payment - cashback);
 	}
 }
