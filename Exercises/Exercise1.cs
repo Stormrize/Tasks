@@ -61,20 +61,42 @@
 	public static void Main()
 	{
 		Console.WriteLine("Скільки кроків ви хочете пройти сьогодні?");
-		int stepsGoal = Convert.ToInt32(Console.ReadLine());
-		Console.WriteLine("Скільлки ви кроків вже пройшли?");
-		int stepsDone = Convert.ToInt32(Console.ReadLine());
+		int stepsGoal;
+		while (!int.TryParse(Console.ReadLine(), out stepsGoal))
+		{
+			Console.WriteLine("Будь ласка, введіть коректне число:");
+		}
+
+		Console.WriteLine("Скільки ви кроків вже пройшли?");
+		int stepsDone;
+		while (!int.TryParse(Console.ReadLine(), out stepsDone))
+		{
+			Console.WriteLine("Будь ласка, введіть коректне число:");
+		}
+
 		Console.WriteLine(Fitnesstracker(stepsGoal, stepsDone));
-		Console.WriteLine("Скільки ви спожили електроенргії цього місяця в кіловатах на годину?");
-		int kWh =  Convert.ToInt32(Console.ReadLine());
+
+		Console.WriteLine("Скільки ви спожили електроенергії цього місяця в кіловатах на годину?");
+		int kWh;
+		while (!int.TryParse(Console.ReadLine(), out kWh))
+		{
+			Console.WriteLine("Будь ласка, введіть коректне число:");
+		}
+
 		Console.WriteLine(ElectricityToPay(kWh));
+
 		Console.WriteLine("Скільки вам потрібно оплатити?");
-		int payment = Convert.ToInt32(Console.ReadLine());
+		int payment;
+		while (!int.TryParse(Console.ReadLine(), out payment))
+		{
+			Console.WriteLine("Будь ласка, введіть коректне число:");
+		}
+
 		Console.WriteLine("У вас є карта лояльності? так | ні");
-		String answer = Console.ReadLine();
-		bool card;
-		if (answer.Equals("так")) card = true;
-		else card = false;
+		string answer = Console.ReadLine()?.Trim().ToLower();
+
+		bool card = answer == "так";
+
 		Console.WriteLine(Cashback(payment, card));
 	}
 }
