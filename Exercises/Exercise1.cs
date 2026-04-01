@@ -114,6 +114,6 @@
 		
 		bool card = answer == "так";
 		
-		CalculateDiscountAndCashback(payment, card);
+		Cashback(payment, card);
 	}
 }
