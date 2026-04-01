@@ -96,6 +96,7 @@
 		string answer = Console.ReadLine()?.Trim().ToLower();
 
 		while (answer != "так" || answer != "ні") {
+			Console.WriteLine("Некоректні данні!");
 			answer = Console.ReadLine()?.Trim().ToLower();
 		}
 		bool card = answer == "так";
