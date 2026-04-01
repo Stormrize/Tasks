@@ -34,28 +34,35 @@
 		return result;
 	}
 
-	private static float Cashback(int payment, bool card)
+	private static void Cashback(int payment, bool hasCard)
 	{
-		if (payment < 0) return 0;
-		float result;
-		if (payment > 20000 && card)
-		{
-			result = payment * 0.1f;
-		}
-		else if (payment > 10000 && !card)
-		{
-			result = payment * 0.05f;
-		}
-		else if (payment > 10000 && card)
-		{
-			result = payment * 0.08f;
-		}
-		else
-		{
-			result = payment * 0.01f;
-		}
-
-		return result;
+	    if (payment <= 0)
+	    {
+	        Console.WriteLine("Некоректна сума!");
+	        return;
+	    }
+	
+	    float cashback = 0;
+	    float discount = 0;
+	
+	    if (payment > 10000)
+	        cashback = payment * 0.05f;
+	    else if (payment > 2000)
+	        cashback = payment * 0.01f;
+	
+	    if (hasCard)
+	    {
+	        if (payment > 20000)
+	            discount = payment * 0.05f;
+	        else
+	            discount = payment * 0.03f;
+	    }
+	
+	    float finalPrice = payment - discount;
+	
+	    Console.WriteLine($"Кешбек: {cashback}");
+	    Console.WriteLine($"Знижка: {discount}");
+	    Console.WriteLine($"До оплати: {finalPrice}");
 	}
 	
 	public static void Main()
@@ -94,14 +101,15 @@
 
 		Console.WriteLine("У вас є карта лояльності? так | ні");
 		string answer = Console.ReadLine()?.Trim().ToLower();
-
-		while (answer != "так" || answer != "ні") {
-			Console.WriteLine("Некоректні данні!");
-			answer = Console.ReadLine()?.Trim().ToLower();
+		
+		while (answer != "так" && answer != "ні")
+		{
+		    Console.WriteLine("Некоректні дані!");
+		    answer = Console.ReadLine()?.Trim().ToLower();
 		}
+		
 		bool card = answer == "так";
-		float cashback = Cashback(payment, card);
-		float discountPercent = payment == 0 ? 0 : cashback / payment * 100;
-		Console.WriteLine("Кешбек: " + cashback + "\nСкидка: " + discountPercent + "\nЗагальна сумма: " + payment - cashback);
+		
+		CalculateDiscountAndCashback(payment, card);
 	}
 }
