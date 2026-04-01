@@ -95,8 +95,10 @@
 		Console.WriteLine("У вас є карта лояльності? так | ні");
 		string answer = Console.ReadLine()?.Trim().ToLower();
 
+		while (answer != "так" || answer != "ні") {
+			answer = Console.ReadLine()?.Trim().ToLower();
+		}
 		bool card = answer == "так";
-
 		float cashback = Cashback(payment, card);
 		float discountPercent = payment == 0 ? 0 : cashback / payment * 100;
 		Console.WriteLine("Кешбек: " + cashback + "\nСкидка: " + discountPercent + "\nЗагальна сумма: " + payment - cashback);
