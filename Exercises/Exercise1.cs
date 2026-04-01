@@ -59,9 +59,13 @@
 	    }
 	
 	    float finalPrice = payment - discount;
-	
-	    Console.WriteLine($"Кешбек: {cashback}");
-	    Console.WriteLine($"Знижка: {discount}");
+
+		if (cashback != 0) {
+			 Console.WriteLine($"Кешбек: {cashback}");
+		}
+		if (discount != 0) {
+			Console.WriteLine($"Знижка: {discount}");
+		}
 	    Console.WriteLine($"До оплати: {finalPrice}");
 	}
 	
