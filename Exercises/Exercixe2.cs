@@ -42,6 +42,7 @@ public class Exercixe2
         int i = 1;
         if (length < 2)
         {
+             Console.WriteLine("Length should be at least 2");
              return array;
         }
         if (array[0] > array[1])
