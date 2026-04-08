@@ -170,5 +170,4 @@ public class Exercixe2
         int[] biggestSubArr = BiggestSubArr(10);
         Console.WriteLine($"Biggest subarray of 3 elements starts at index: {biggestSubArr[0]}, {biggestSubArr[1]}, {biggestSubArr[2]}");
     }
-    
 }
