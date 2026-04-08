@@ -1,4 +1,4 @@
-﻿class Exercise1 
+class Exercise1 
 {
 
 	private static String Fitnesstracker(int stepsGoal, int stepsDone)
@@ -34,39 +34,28 @@
 		return result;
 	}
 
-	private static void Cashback(int payment, bool hasCard)
+	private static float Cashback(int payment, bool card)
 	{
-	    if (payment <= 0)
-	    {
-	        Console.WriteLine("Некоректна сума!");
-	        return;
-	    }
-	
-	    float cashback = 0;
-	    float discount = 0;
-	
-	    if (payment > 10000)
-	        cashback = payment * 0.05f;
-	    else if (payment > 2000)
-	        cashback = payment * 0.01f;
-	
-	    if (hasCard)
-	    {
-	        if (payment > 20000)
-	            discount = payment * 0.05f;
-	        else
-	            discount = payment * 0.03f;
-	    }
-	
-	    float finalPrice = payment - discount;
+		if (payment < 0) return 0;
+		float result;
+		if (payment > 20000 && card)
+		{
+			result = payment * 0.1f;
+		}
+		else if (payment > 10000 && !card)
+		{
+			result = payment * 0.05f;
+		}
+		else if (payment > 10000 && card)
+		{
+			result = payment * 0.08f;
+		}
+		else
+		{
+			result = payment * 0.01f;
+		}
 
-		if (cashback != 0) {
-			 Console.WriteLine($"Кешбек: {cashback}");
-		}
-		if (discount != 0) {
-			Console.WriteLine($"Знижка: {discount}");
-		}
-	    Console.WriteLine($"До оплати: {finalPrice}");
+		return result;
 	}
 	
 	public static void Main()
@@ -90,7 +79,7 @@
 		Console.WriteLine("Скільки ви спожили електроенергії цього місяця в кіловатах на годину?");
 		int kWh;
 		while (!int.TryParse(Console.ReadLine(), out kWh))
-		{:
+		{
 			Console.WriteLine("Будь ласка, введіть коректне число:");
 		}
 
@@ -105,15 +94,9 @@
 
 		Console.WriteLine("У вас є карта лояльності? так | ні");
 		string answer = Console.ReadLine()?.Trim().ToLower();
-		
-		while (answer != "так" && answer != "ні")
-		{
-		    Console.WriteLine("Некоректні дані!");
-		    answer = Console.ReadLine()?.Trim().ToLower();
-		}
-		
+
 		bool card = answer == "так";
-		
-		Cashback(payment, card);
+
+		Console.WriteLine(Cashback(payment, card));
 	}
 }
