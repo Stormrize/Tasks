@@ -90,7 +90,11 @@ public class Exercixe2
     }
     public static int CountWords(string text)
     {
-        int counter = 1;
+        int counter = 0;
+        if (!string.IsNullOrWhiteSpace(text))
+        {
+            counter = 1;
+        }
         for (int i = 0; i < text.Length; i++)
         {
             if (text[i] == ' ') {
