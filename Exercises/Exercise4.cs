@@ -209,7 +209,7 @@ public class Exercise4
                     string address = Console.ReadLine();
 
                     contactBook.AddContact(new Contact(name, phone, address));
-                    Console.WriteLine("✅ Added!");
+                    Console.WriteLine("Added!");
                     break;
 
                 case "2":
@@ -217,7 +217,7 @@ public class Exercise4
                     int idToRemove = int.Parse(Console.ReadLine());
 
                     contactBook.RemoveContactById(idToRemove);
-                    Console.WriteLine("🗑 Removed!");
+                    Console.WriteLine("Removed!");
                     break;
 
                 case "3":
@@ -240,7 +240,7 @@ public class Exercise4
                         string.IsNullOrWhiteSpace(newAddr) ? null : newAddr
                     );
 
-                    Console.WriteLine("✏️ Updated!");
+                    Console.WriteLine("Updated!");
                     break;
 
                 case "4":
@@ -289,13 +289,13 @@ public class Exercise4
                         string.IsNullOrWhiteSpace(newAddr1) ? null : newAddr1
                     );
 
-                    Console.WriteLine("✏️ Updated!");
+                    Console.WriteLine("Updated!");
                     break;
                 case "0":
                     return;
 
                 default:
-                    Console.WriteLine("❌ Wrong choice");
+                    Console.WriteLine("Wrong choice");
                     break;
             }
         }
